@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="container">
+      <input id="input" class="paragraph" />
+      <h1 id="info"></h1>
+    </div>
+    <script>
+      let input = document.querySelector("#input");
+      let info = document.querySelector("#info");
+      let n = -1;
+      let menu = [];
+      input.addEventListener("change", (e) => {
+        n = parseInt(e.target.value);
+        switch (n) {
+          case 0:
+            info.innerHTML = "Ban da chon xong do an!";
+            break;
+          case 1:
+            info.innerHTML = "Bun cha ha noi";
+            menu.push("bun_cha");
+            break;
+          case 2:
+            info.innerHTML = "Bun bo hue";
+            menu.push("bun_bo_hue");
+            break;
+          case 3:
+            info.innerHTML = "Banh trang tay son";
+            menu.push("banh_trang");
+            break;
+          case 4:
+            info.innerHTML = "Nem chua binh dinh";
+            menu.push("nem_chua");
+            break;
+          case 5:
+            info.innerHTML = "Banh mi cha lua";
+            menu.push("banh_mi");
+        }
+        console.log(menu);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="print"></div>
+    <input style="margin-bottom: 20px;" type="text" name="" id="input_01" /><br>
+    <input style="margin-bottom: 20px;" type="text" name="" id="input_02" /><br>
+    <input type="text" name="" id="input_03" />
+
+    <!-- let i = 3; while (i) { console.log( i-- ); } Lùi đến 1 thì dừng -->
+
+    <script>
+      var n;
+      setInterval(() => {
+        const string_01 = document.getElementById("input_01").value;
+        const string_02 = document.getElementById("input_02").value;
+        const string_03 = document.getElementById("input_03").value;
+
+        n = parseInt(string_01);
+        m = parseInt(string_02);
+        l = parseInt(string_03);
+      }, 1000);
+
+      setTimeout(() => {
+        let chan = [],
+          e = 0,
+          le = [],
+          old = 0,
+          all = [];
+        while (e < n) {
+          if (e % 2 == 0) {
+            chan.push(e);
+          } else {
+            le.push(e);
+          }
+          ++e;
+          all.push(e);
+        }
+
+        //Tim so chan, le in ra man hinh
+        if (n % 2 == 0) {
+          console.log("n la so chan");
+          console.log(chan);
+        } else if (n % 2 == 1) {
+          console.log("n la so le");
+          console.log(le);
+        }
+
+        //In ra man hinh tat ca cac so < n
+        console.log(all);
+
+        //Tim la duong, am
+        if (n > 0) {
+          console.log("n la so duong");
+        } else if (n < 0) {
+          console.log("n la so am");
+        }
+
+        //Tim so nguyen to
+        function isPrime(n) {
+          let flag = 1;
+          if (n < 2) return (flag = 0);
+          let i = 2;
+          while (i < n) {
+            if (n % i == 0) {
+              flag = 0;
+              break;
+            }
+            i++;
+          }
+          return flag;
+        }
+        if (isPrime(n) == true) {
+          console.log("n la so nguyen to");
+        } else {
+          console.log("n khong la so nguyen to");
+        }
+
+        let i = 0,
+          check = 0,
+          result = "";
+        while (i < n) {
+          check = isPrime(i);
+          if (check == 1) result += i + " ";
+          ++i;
+        }
+        console.log("Cac so nguyen to nho hon n: " + result);
+
+        //Giai phuong trinh bac nhat
+        function PTBN(n, m) {
+          if (n == 0 && m == 0) {
+            console.log("Phương trình vô số nghiệm");
+          } else if (n != 0 && m == 0) {
+            console.log("Phương trình có nghiệm x = 0");
+          } else if (n == 0 && m != 0) {
+            console.log("Phương trình vô nghiệm");
+          } else {
+            console.log("Phương trình có nghiệm x = " + -m / n);
+          }
+        }
+        PTBN(n, m); 
+
+        //Nhap so tuoi
+        if(l<18){
+            document.getElementById('input_03').value = '';
+            console.log("Nhap lai so tuoi!")
+        }
+      }, 5000);
+    </script>
+  </body>
+</html>
