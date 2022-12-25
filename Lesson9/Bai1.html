@@ -7,13 +7,81 @@
     <title>Document</title>
   </head>
   <body>
-    <label for="content">Content</label>
+    <label for="content">Nhập</label>
     <input type="text" name="content" id="content" />
     <button class="btn-add">Add</button>
-    <div>
-      <h3>Danh sach task:</h3>
-      <ul></ul>
-    </div>
-    <script src="./bai1.js"></script>
+    <h3>Danh sách các mục cần làm:</h3>
+    <div class="task-content"></div>
+
+    <style>
+      .task_name {
+        margin: 10px 0;
+        font-weight: bold;
+      }
+      a {
+        text-decoration: none;
+        padding: 4px;
+        background-color: dimgrey;
+        color: aliceblue;
+        border-radius: 4px;
+      }
+    </style>
+
+    <script>
+      const content = document.querySelector("#content");
+      const btnAdd = document.querySelector(".btn-add");
+      const taskContent = document.querySelector(".task-content");
+      let contentValue = content.value;
+      let tasks = localStorage.getItem("NewTodo")
+        ? JSON.parse(localStorage.getItem("NewTodo"))
+        : [];
+      getTask(tasks);
+      btnAdd.addEventListener("click", () => {
+        if (!content.value) {
+          alert("Xin hãy nhập thông tin!");
+          return false;
+        }
+        let tasks = localStorage.getItem("NewTodo")
+          ? JSON.parse(localStorage.getItem("NewTodo"))
+          : [];
+        tasks.push({
+          content: content.value,
+        });
+        content.value = "";
+
+        localStorage.setItem("NewTodo", JSON.stringify(tasks));
+        getTask(tasks);
+      });
+
+      function getTask(tasks) {
+        let content = "<ul>";
+        tasks.map((task, index) => {
+          content += `
+        <li>
+            <div class="task_name">${task.content}</div>
+            <a href="#" onclick="editTask(${index})">Edit</a>
+            <a href="#" onclick="deleteTask(${index})">Delete</a>
+        </li>`;
+        });
+        content += "</ul>";
+        document.querySelector(".task-content").innerHTML = content;
+      }
+
+      function editTask(index) {
+        let tasks = localStorage.getItem("NewTodo")
+        ? JSON.parse(localStorage.getItem("NewTodo"))
+        : [];
+        content.value = tasks[index].content;
+      }
+
+      function deleteTask(index) {
+        let tasks = localStorage.getItem("NewTodo")
+        ? JSON.parse(localStorage.getItem("NewTodo"))
+        : [];
+        tasks.splice(index, 1);
+        localStorage.setItem("NewTodo", JSON.stringify(tasks));
+        getTask(tasks);
+      }
+    </script>
   </body>
 </html>
