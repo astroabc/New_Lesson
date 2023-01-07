@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">Mentor 1 sao</div>
+    <button onclick="changeBg()">Click me</button>
+
+    <div class="box1">
+        <div class="div1" style="background-color: blue;"></div>
+        <div class="div2" style="background-color: palevioletred;"></div>
+        <div class="div3" style="background-color: orange;"></div>
+    </div>
+    <input type="text" name="" id="theme1">
+    <input type="text" name="" id="theme2">
+    <input type="text" name="" id="theme3">
+    <div>
+        <button onclick="changePer()">Submit</button>
+    </div>
+    <style>
+        .box{
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+        }
+        .change{
+            background-color: red;
+        }
+        .box1{
+            display: flex;
+            width: 500px;
+            height: 200px;
+        }
+        .div1, .div2, .div3{
+            height: 100%;
+            width: calc(100%/3);
+        }
+    </style>
+    <script>
+        function changeBg() {
+            const color =  document.querySelector('.box')
+            color.classList.toggle("change")
+        }
+
+        function changePer(){
+            const theme1 =  parseInt(document.querySelector('#theme1').value)
+            const theme2 =  parseInt(document.querySelector('#theme2').value)
+            const theme3 =  parseInt(document.querySelector('#theme3').value)
+
+            const div1 =  document.querySelector('.div1');
+            const div2 =  document.querySelector('.div2');
+            const div3 =  document.querySelector('.div3');
+            div1.style.width = theme1 + '%';
+            div2.style.width = theme2 + '%';
+            div3.style.width = theme3 + '%';
+        }
+    </script>
+</body>
+</html>
